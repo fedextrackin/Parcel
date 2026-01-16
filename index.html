@@ -1,8 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;"><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Track Packages - FedEx</title>
@@ -1206,7 +1202,7 @@
         {
           tracking_number: 'FX261008JL',
           status: 'awaiting_clearance',
-          service_type: 'FedEx International Priority',
+          service_type: 'FedEx Express',
           current_location: 'Hawthorne, TX FedEx Facility',
           estimated_delivery: 'Today 9:30 PM',
           ship_date: '2026-01-16',
@@ -1238,7 +1234,7 @@
           location: 'HAWTHORNE, TX',
           event_date: '2026-01-16',
           event_time: '10:30:00',
-          description: 'Package registration completed at FedEx facility. High-value shipment secured in designated secure holding area.',
+          description: 'Package registration completed at FedEx facility.',
           is_latest: false,
           event_type: 'status_update'
         },
@@ -1248,7 +1244,7 @@
           location: 'HAWTHORNE, TX',
           event_date: '2026-01-16',
           event_time: '11:15:00',
-          description: 'International clearance required for high-value shipment. Awaiting recipient authorization and payment verification.',
+          description: 'Shipment is awaiting recipient clearance approval.',
           is_latest: true,
           event_type: 'clearance_hold'
         }
@@ -1287,8 +1283,8 @@
           display_order: 1
         },
         {
-          question: 'What is a clearance request for international packages?',
-          answer: 'High-value international shipments require recipient verification and approval before they can proceed through customs.',
+          question: 'What is a clearance request for high-value packages?',
+          answer: 'High-value shipments require recipient verification and approval before they can proceed for delivery.',
           category: 'clearance',
           display_order: 2
         }
@@ -1414,21 +1410,17 @@
           </div>
 
           ${data.requires_clearance ? `
-          <!-- Professional Clearance Notice -->
+          <!-- Clearance Notice -->
           <div class="clearance-notice rounded-lg p-3 sm:p-4">
             <div class="flex items-start space-x-2 sm:space-x-3">
               <i class="fas fa-info-circle text-yellow-600 text-lg sm:text-xl mt-1"></i>
               <div>
-                <h4 class="font-bold text-yellow-800 mb-1 sm:mb-2 text-sm sm:text-base">Clearance Required - High-Value International Shipment</h4>
+                <h4 class="font-bold text-yellow-800 mb-1 sm:mb-2 text-sm sm:text-base">Clearance Required</h4>
                 <p class="text-yellow-700 text-xs sm:text-sm mb-2">
-                  This international shipment with declared value of $${data.declared_value.toLocaleString()} USD requires recipient clearance authorization. 
-                  A processing fee of $${data.clearance_payment_required} must be settled before the package can proceed through customs clearance.
+                  This shipment requires recipient clearance and payment of $${data.clearance_payment_required} before it can proceed for delivery.
                 </p>
                 <p class="text-yellow-700 text-xs sm:text-sm">
-                  Estimated delivery timeframe: Today by 9:30 PM (pending timely clearance completion and payment verification)
-                </p>
-                <p class="text-yellow-700 text-xs sm:text-sm mt-2">
-                  <strong>Note:</strong> Shipment is secured at FedEx facility awaiting clearance. Processing will commence immediately upon payment confirmation.
+                  Expected delivery: Today by 9:30 PM (if clearance is completed on time)
                 </p>
               </div>
             </div>
@@ -1503,7 +1495,7 @@
                 </div>
                 ${data.requires_clearance ? `
                 <div class="flex justify-between">
-                  <span class="text-fedex-gray">Clearance Fee:</span>
+                  <span class="text-fedex-gray">Clearance Required:</span>
                   <span class="font-semibold text-fedex-orange">$${data.clearance_payment_required}</span>
                 </div>
                 ` : ''}
@@ -1556,7 +1548,7 @@
                   </div>
 
                   <div class="absolute bottom-2 sm:bottom-4 left-1/2 transform -translate-x-1/2 bg-white px-2 sm:px-4 py-1 sm:py-2 rounded-lg shadow text-center">
-                    <div class="text-xs text-fedex-gray">Current Status</div>
+                    <div class="text-xs text-fedex-gray">Current Location</div>
                     <div class="font-bold text-fedex-dark-gray text-xs sm:text-sm">Awaiting Clearance</div>
                   </div>
                 </div>
@@ -1577,38 +1569,36 @@
         return;
       }
 
-      const subject = `Clearance Authorization - Tracking ${trackingNumber}`;
-      const body = `To: FedEx International Clearance Department
-From: James Goari
-Date: January 16, 2026
+      const subject = `Clearance Request for Package ${trackingNumber}`;
+      const body = `Dear FedEx Team,
 
-Subject: Clearance Authorization for High-Value International Shipment
+I am requesting clearance for my package with tracking number: ${trackingNumber}
 
-Tracking Number: ${trackingNumber}
-Declared Value: $${packageData.declared_value.toLocaleString()} USD
-Clearance Fee: $${packageData.clearance_payment_required}
-Contents: ${packageData.contents}
+Package Details:
+- Tracking Number: ${trackingNumber}
+- Contents: ${packageData.contents}
+- Declared Value: $${packageData.declared_value.toLocaleString()} USD
+- Current Location: ${packageData.current_location}
+- Clearance Amount Required: $${packageData.clearance_payment_required}
 
 Recipient Information:
 - Name: ${packageData.recipient_name}
 - Address: ${packageData.recipient_address}, ${packageData.recipient_city}
-- Contact: ${packageData.recipient_phone} / ${packageData.recipient_email}
+- Phone: ${packageData.recipient_phone}
+- Email: ${packageData.recipient_email}
 
-Authorization Statement:
+I confirm that I am the intended recipient of this package and authorize FedEx to proceed with the clearance process.
 
-I, James Goari, hereby authorize FedEx to process the international clearance for the above-referenced high-value shipment. I confirm that I am the designated recipient and agree to settle the required clearance fee of $${packageData.clearance_payment_required} upon verification.
+Please let me know if you need any additional documentation or verification.
 
-Please proceed with customs clearance and provide payment instructions for the processing fee. I authorize FedEx to proceed with delivery upon completion of clearance procedures.
-
-Signature Authorization:
-James Goari
-Recipient`;
+Thank you,
+${packageData.recipient_name}`;
 
       const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=helpfedexparcel@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       
       window.open(gmailUrl, '_blank');
       
-      showNotification('Opening clearance authorization email template...', 'info');
+      showNotification('Opening Gmail to send clearance request...', 'info');
     }
 
     async function submitContactForm(formData) {
@@ -1746,7 +1736,7 @@ Recipient`;
         doc.text(`Contents: ${packageData.contents}`, 20, yPos);
         yPos += 10;
         if (packageData.requires_clearance) {
-          doc.text(`Clearance Fee Required: $${packageData.clearance_payment_required}`, 20, yPos);
+          doc.text(`Clearance Required: $${packageData.clearance_payment_required}`, 20, yPos);
           yPos += 10;
         }
 
